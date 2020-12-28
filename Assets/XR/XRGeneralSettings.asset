@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4c3631f5e58749a59194e0cf6baf6d5, type: 3}
   m_Name: Standalone Providers
   m_EditorClassIdentifier: 
-  m_InitializationComplete: 0
   m_RequiresSettingsUpdate: 0
   m_AutomaticLoading: 0
   m_AutomaticRunning: 0
-  m_Loaders: []
+  m_Loaders:
+  - {fileID: 11400000, guid: c37b7ebe6d509f244930bdba4a82b975, type: 2}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45,7 +45,4 @@ MonoBehaviour:
   m_Name: Standalone Settings
   m_EditorClassIdentifier: 
   m_LoaderManagerInstance: {fileID: -7083178021826342286}
-  m_InitManagerOnStart: 0
-  m_XRManager: {fileID: 0}
-  m_ProviderIntialized: 0
-  m_ProviderStarted: 0
+  m_InitManagerOnStart: 1
