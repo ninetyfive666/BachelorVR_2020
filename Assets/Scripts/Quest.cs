@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class Quest : MonoBehaviour
 {
-    AudioSource audioSource;
+
     public GameObject Kartoffel;
     public GameObject Ei;
+    public GameObject Prop;
 
-    public GameObject New;
+    Rigidbody rbKartoffel;
+    Rigidbody rbEi;
+
+    Transform parentTransform;
+    MeshCollider eimerCollider;
+    AudioSource audioSource;
 
     bool bEi = false;
     bool bKartoffel = false;
@@ -18,6 +24,11 @@ public class Quest : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        parentTransform = GetComponent<Transform>();
+        eimerCollider = GetComponent<MeshCollider>();
+
+        rbKartoffel = Kartoffel.GetComponent<Rigidbody>();
+        rbEi = Ei.GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -26,7 +37,6 @@ public class Quest : MonoBehaviour
         {
             AudioPlayer();
             bAudio = true;
-            Debug.Log("boool isch trieeee");
         }
 
     }
@@ -36,20 +46,35 @@ public class Quest : MonoBehaviour
         if (collision.transform.gameObject == Kartoffel)
         {
             bKartoffel = true;
-            Debug.Log("Kartoffel im Eimer");
+            Kartoffel.transform.SetParent(parentTransform);
+            rbKartoffel.isKinematic = true;
+
         }
 
         if (collision.transform.gameObject == Ei)
         {
             bEi = true;
-            Debug.Log("Ei im Eimer");
-            
+            Ei.transform.SetParent(parentTransform);
+            rbEi.isKinematic = true;
         }
     }
 
     void AudioPlayer()
     {
         audioSource.Play();
-        New.SetActive(true);
+        Prop.SetActive(true);
+    }
+
+    public void KitchenSocket()
+    {
+        eimerCollider.enabled = false;
+
+        Ei.transform.SetParent(null);
+        Kartoffel.transform.SetParent(null);
+
+        rbEi.isKinematic = false;
+        rbKartoffel.isKinematic = false;
+        
+        
     }
 }
