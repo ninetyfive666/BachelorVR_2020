@@ -134,6 +134,12 @@ public class ObjectAudioPlayer : MonoBehaviour
         audioSource.Play();
     }
 
+    public void PlayQuestStep3()
+    {
+        audioSource.clip = (questStep3);
+        audioSource.Play();
+    }
+
     public void PlayQuestStart()
     {
         audioSource.clip = (questStart);

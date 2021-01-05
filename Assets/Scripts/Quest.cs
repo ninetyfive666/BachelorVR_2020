@@ -9,6 +9,8 @@ public class Quest : MonoBehaviour
 
     [Header("External Collider")]
     public CollisionCheck collisionCheck;
+    public GameObject QuestCollider;
+    public GameObject EimerCollider;
 
     [Header("Collectables")]
     public GameObject Kartoffel;
@@ -17,11 +19,8 @@ public class Quest : MonoBehaviour
 
     [Header("Topf")]
     public GameObject Prop;
-    public GameObject Soup1;
-    public GameObject Soup2;
-    public GameObject Soup3;
-    public GameObject Soup4;
-    public GameObject Soup5;
+    public GameObject[] spawnArray;
+
 
     [Header("Leitsystem")]
     public LineRenderer Line1;
@@ -34,7 +33,7 @@ public class Quest : MonoBehaviour
     Rigidbody rbKarotte;
 
     Transform parentTransform;
-    MeshCollider eimerCollider;
+    BoxCollider eimerTrigger;
 
 
     bool bEi = false;
@@ -51,7 +50,9 @@ public class Quest : MonoBehaviour
     {
         parentTransform = GetComponent<Transform>();
 
-        eimerCollider = GetComponent<MeshCollider>();
+        eimerTrigger = GetComponent<BoxCollider>();
+
+        
 
         rbKartoffel = Kartoffel.GetComponent<Rigidbody>();
         rbEi = Ei.GetComponent<Rigidbody>();
@@ -79,26 +80,22 @@ public class Quest : MonoBehaviour
         }
 
     }
-
-
-        void OnCollisionEnter(Collision Collider)
-        {
-        if (Collider.transform.gameObject == Kartoffel)
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.gameObject == Kartoffel)
         {
             bKartoffel = true;
             Kartoffel.transform.SetParent(parentTransform);
             rbKartoffel.isKinematic = true;
-
         }
-
-        if (Collider.transform.gameObject == Ei)
+        if (other.transform.gameObject == Ei)
         {
             bEi = true;
             Ei.transform.SetParent(parentTransform);
             rbEi.isKinematic = true;
         }
 
-        if (Collider.transform.gameObject == Karotte)
+        if (other.transform.gameObject == Karotte)
         {
             bKarotte = true;
             Karotte.transform.SetParent(parentTransform);
@@ -133,27 +130,25 @@ public class Quest : MonoBehaviour
         Prop.SetActive(true);
     }
 
-    void QuestStep3()
+    public void KitchenTrigger()
     {
-        Soup1.SetActive(true);
-        Soup2.SetActive(true);
-        Soup3.SetActive(true);
-        Soup4.SetActive(true);
-        Soup5.SetActive(true);
-    }
-
-    public void KitchenSocket()
-    {
-        eimerCollider.enabled = false;
-
-        Ei.transform.SetParent(null);
+        eimerTrigger.enabled = false;
         Kartoffel.transform.SetParent(null);
         Karotte.transform.SetParent(null);
-
-        rbEi.isKinematic = false;
+        Ei.transform.SetParent(null);
         rbKartoffel.isKinematic = false;
         rbKarotte.isKinematic = false;
+        rbEi.isKinematic = false;
+    }
 
-        
+    void QuestStep3()
+    {   
+        objectAudioPlayer.PlayQuestStep2();
+        Line4.enabled = false;
+        for (int i = 0; i < spawnArray.Length; i++)
+        {
+            spawnArray[i].SetActive(true);
+        }
+        Destroy(gameObject);
     }
 }
