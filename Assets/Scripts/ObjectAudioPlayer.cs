@@ -23,6 +23,7 @@ public class ObjectAudioPlayer : MonoBehaviour
     public AudioClip Feuerholz;
 
     [Header("Quest Steps")]
+    public AudioClip questStart;
     public AudioClip questStep1;
     public AudioClip questStep2;
     public AudioClip questStep3;
@@ -130,6 +131,12 @@ public class ObjectAudioPlayer : MonoBehaviour
     public void PlayQuestStep2()
     {
         audioSource.clip = (questStep2);
+        audioSource.Play();
+    }
+
+    public void PlayQuestStart()
+    {
+        audioSource.clip = (questStart);
         audioSource.Play();
     }
 }
