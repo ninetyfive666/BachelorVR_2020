@@ -7,17 +7,15 @@ public class Quest : MonoBehaviour
     [Header("AudioPlayer")]
     public ObjectAudioPlayer objectAudioPlayer;
 
-    [Header("External Collider")]
+    [Header("Topf Collectable Goal")]
     public CollisionCheck collisionCheck;
-    public GameObject QuestCollider;
-    public GameObject EimerCollider;
 
     [Header("Collectables")]
     public GameObject Kartoffel;
     public GameObject Ei;
     public GameObject Karotte;
 
-    [Header("Topf")]
+    [Header("Spawn")]
     public GameObject Prop;
     public GameObject[] spawnArray;
 
@@ -51,8 +49,6 @@ public class Quest : MonoBehaviour
         parentTransform = GetComponent<Transform>();
 
         eimerTrigger = GetComponent<BoxCollider>();
-
-        
 
         rbKartoffel = Kartoffel.GetComponent<Rigidbody>();
         rbEi = Ei.GetComponent<Rigidbody>();

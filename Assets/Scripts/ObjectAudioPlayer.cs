@@ -22,11 +22,16 @@ public class ObjectAudioPlayer : MonoBehaviour
     public AudioClip Karotte;
     public AudioClip Feuerholz;
 
-    [Header("Quest Steps")]
+    [Header("KochQuest")]
     public AudioClip questStart;
     public AudioClip questStep1;
     public AudioClip questStep2;
     public AudioClip questStep3;
+
+    [Header("WaschQuest")]
+    public AudioClip washingQuestStart;
+    public AudioClip washingQuestStep1;
+    public AudioClip washingQuestStep2;
 
     AudioSource audioSource;
 
@@ -143,6 +148,23 @@ public class ObjectAudioPlayer : MonoBehaviour
     public void PlayQuestStart()
     {
         audioSource.clip = (questStart);
+        audioSource.Play();
+    }
+
+    public void PlayWhashingQ1()
+    {
+        audioSource.clip = (washingQuestStart);
+        audioSource.Play();
+    }
+    public void PlayWhashingQuestStep1()
+    {
+        audioSource.clip = (washingQuestStep1);
+        audioSource.Play();
+    }
+
+    public void PlayWhashingQuestStep2()
+    {
+        audioSource.clip = (washingQuestStep2);
         audioSource.Play();
     }
 }
