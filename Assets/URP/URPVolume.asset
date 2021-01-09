@@ -53,6 +53,7 @@ MonoBehaviour:
   components:
   - {fileID: 7323393167370124845}
   - {fileID: -8730238160593464973}
+  - {fileID: 2140076848251034055}
 --- !u!114 &2140076848251034055
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -82,8 +83,8 @@ MonoBehaviour:
     min: 0
     max: 1
   smoothness:
-    m_OverrideState: 0
-    m_Value: 0.2
+    m_OverrideState: 1
+    m_Value: 1
     min: 0.01
     max: 1
   rounded:

@@ -8,20 +8,20 @@ using UnityEngine.Rendering.Universal;
 public class RoomDestinationTeleport : MonoBehaviour
 {
     public GameObject XRRig;
+    public Volume volume = null;
+
     public GameObject DestinationKeller;
     public GameObject DestinationWaschküche;
     public GameObject DestinationSchlafzimmer;
     public GameObject DestinationKüche;
     public GameObject DestinationGarten;
 
-
+    [Range(0f,1f)]
     public float intensity = 0.75f;
+    [Range(0f, 1f)]
     public float duration = 0.5f;
-    public Volume volume = null;
 
     private Vignette vignette = null;
-
-
 
     public void FadeIn()
     {
@@ -32,7 +32,6 @@ public class RoomDestinationTeleport : MonoBehaviour
     {
         Tween.Value(intensity, 0, ApplyValue, duration, duration, Tween.EaseOut);
     }
-
 
     public void Awake()
     {
