@@ -26,6 +26,8 @@ public class Quest : MonoBehaviour
     public LineRenderer Line3;
     public LineRenderer Line4;
 
+    public GameObject origin;
+
     Rigidbody rbKartoffel;
     Rigidbody rbEi;
     Rigidbody rbKarotte;
@@ -33,6 +35,7 @@ public class Quest : MonoBehaviour
     Transform parentTransform;
     BoxCollider eimerTrigger;
 
+    MeshRenderer rend;
 
     bool bEi = false;
     bool bKartoffel = false;
@@ -49,6 +52,8 @@ public class Quest : MonoBehaviour
         parentTransform = GetComponent<Transform>();
 
         eimerTrigger = GetComponent<BoxCollider>();
+
+        rend = GetComponent<MeshRenderer>();
 
         rbKartoffel = Kartoffel.GetComponent<Rigidbody>();
         rbEi = Ei.GetComponent<Rigidbody>();
@@ -145,6 +150,8 @@ public class Quest : MonoBehaviour
         {
             spawnArray[i].SetActive(true);
         }
-        Destroy(gameObject);
+        parentTransform.position = origin.transform.position;
+        rend.enabled = false;
+
     }
 }
