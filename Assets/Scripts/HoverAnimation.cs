@@ -8,24 +8,25 @@ public class HoverAnimation : MonoBehaviour
     [Range(0f, 1f)]
     public float duration = .25f;
 
-    public GameObject AnimGoal;
+    [Range(0f, .5f)]
+    public float offset = .1f;
 
     public Color32 white = new Color32(255, 255, 255, 255);
     public Color32 transparent = new Color32(255, 255, 255, 0);
 
     MeshRenderer rend;
     Transform origin;
-    Transform goal;
 
     Vector3 originPosition;
+    Vector3 hoverPosition;
     void Start()
     {
         rend = GetComponent<MeshRenderer>();
         rend.material.SetColor("_BaseColor", transparent);
 
         origin = GetComponent<Transform>();
-        goal = AnimGoal.GetComponent<Transform>();
         originPosition = origin.transform.position;
+        hoverPosition = origin.transform.position + Vector3.down * offset;
     }
 
     // Update is called once per frame
@@ -36,7 +37,7 @@ public class HoverAnimation : MonoBehaviour
 
     public void HoverEnter()
     {
-        Tween.Position(origin, origin.position, goal.position, duration, 0, Tween.EaseOut);
+        Tween.Position(origin, origin.position, hoverPosition, duration, 0, Tween.EaseOut);
         Tween.ShaderColor(rend.material, ("_BaseColor"), transparent, white, duration, 0, Tween.EaseOut);
     }
 
