@@ -14,11 +14,11 @@ public class AnimationPlayer : MonoBehaviour
 
     public void HoverEnter()
     {
-        anim.Play("_Active");
+        anim.SetBool("isActive", true);
     }
 
     public void HoverExit()
     {
-        anim.Play("_NonActive");
+        anim.SetBool("isActive", false);
     }
 }
