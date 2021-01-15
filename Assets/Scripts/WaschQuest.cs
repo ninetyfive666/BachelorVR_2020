@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Pixelplacement;
 using UnityEngine;
 
 public class WaschQuest : MonoBehaviour
@@ -7,9 +8,14 @@ public class WaschQuest : MonoBehaviour
     [Header("AudioPlayer")]
     public ObjectAudioPlayer objectAudioPlayer;
 
+    [Header("Water")]
+    public GameObject Water;
+    public GameObject clothPlane;
+    Renderer waterRenderer;
 
-    [Header("Interactable")]
-    public GameObject Cloth;
+    [Header("Wäscheleine")]
+    public GameObject Rope;
+    public GameObject Smoke;
 
     [Header("DirtyWaterColor")]
     public Color32 dirty = new Color32(152, 149, 147, 180);
@@ -18,42 +24,58 @@ public class WaschQuest : MonoBehaviour
     public LineRenderer Line1;
     public LineRenderer Line2;
 
-    Renderer waterRenderer;
+    Outline clothOutline;
 
-    bool collisionDetected = false;
+
+    bool waterCollisionDetected = false;
     bool questStep1Completed = false;
     void Start()
     {
-        waterRenderer = GetComponent<Renderer>();
+        waterRenderer = Water.GetComponent<Renderer>();
+        clothOutline = clothPlane.GetComponent<Outline>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(collisionDetected == true && questStep1Completed == false)
+        if(waterCollisionDetected == true && questStep1Completed == false)
         {
             ChangeWaterColor();
             questStep1Completed = true;
         }
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.gameObject == Cloth)
+        if (other.transform.gameObject == Water)
         {
-            collisionDetected = true;
+            waterCollisionDetected = true;
         }
     }
 
     public void WashingQuestStart()
     {
-        objectAudioPlayer.PlayWhashingQ1();
+        objectAudioPlayer.PlayWhashingQuestStart();
         Line1.enabled = true;
+        clothOutline.OutlineWidth = 10;
+
     }
 
     void ChangeWaterColor()
     {
-        waterRenderer.material.SetColor("_BaseColor", dirty);
+        Tween.ShaderColor(waterRenderer.material, ("_DeepWaterColor"), dirty, 1, 0f);
+        Tween.ShaderColor(waterRenderer.material, ("_ShallowWaterColor"), dirty, 1, 0f);
+        objectAudioPlayer.PlayWhashingQuestStep1();
+        Line1.enabled = false;
+        Line2.enabled = true;
+    }
+
+    public void FactorySmoke()
+    {
+        Smoke.SetActive(true);
+        objectAudioPlayer.PlayWhashingQuestStep2();
+        Line2.enabled = false;
     }
 
 }

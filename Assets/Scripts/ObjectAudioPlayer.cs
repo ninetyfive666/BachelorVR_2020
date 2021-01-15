@@ -32,6 +32,7 @@ public class ObjectAudioPlayer : MonoBehaviour
     public AudioClip washingQuestStart;
     public AudioClip washingQuestStep1;
     public AudioClip washingQuestStep2;
+    public AudioClip washingQuestStep3;
 
     AudioSource audioSource;
 
@@ -151,20 +152,26 @@ public class ObjectAudioPlayer : MonoBehaviour
         audioSource.Play();
     }
 
-    public void PlayWhashingQ1()
+    public void PlayWhashingQuestStart()
     {
         audioSource.clip = (washingQuestStart);
         audioSource.Play();
     }
+
     public void PlayWhashingQuestStep1()
     {
         audioSource.clip = (washingQuestStep1);
         audioSource.Play();
     }
-
     public void PlayWhashingQuestStep2()
     {
         audioSource.clip = (washingQuestStep2);
+        audioSource.Play();
+    }
+
+    public void PlayWhashingQuestStep3()
+    {
+        audioSource.clip = (washingQuestStep3);
         audioSource.Play();
     }
 }

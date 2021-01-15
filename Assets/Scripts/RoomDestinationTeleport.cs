@@ -15,6 +15,7 @@ public class RoomDestinationTeleport : MonoBehaviour
     public GameObject DestinationSchlafzimmer;
     public GameObject DestinationKüche;
     public GameObject DestinationGarten;
+    public GameObject DestinationGarten2;
 
     [Range(0f,1f)]
     public float intensity = 0.75f;
@@ -71,6 +72,12 @@ public class RoomDestinationTeleport : MonoBehaviour
     {
         FadeIn();
         Tween.Position(XRRig.transform, XRRig.transform.position, DestinationSchlafzimmer.transform.position, 0.01f, duration);
+        FadeOut();
+    }
+    public void TeleportGarten2()
+    {
+        FadeIn();
+        Tween.Position(XRRig.transform, XRRig.transform.position, DestinationGarten2.transform.position, 0.01f, duration);
         FadeOut();
     }
 

@@ -86,7 +86,7 @@ Material:
     m_Floats:
     - Vector1_01465fbb06564b288fc110fb88aee3e3: 0
     - Vector1_19324a8a417141abaa50b6d4a123654b: 1.5
-    - Vector1_282e1399fddb4bb482d765b0d00c6548: 1
+    - Vector1_282e1399fddb4bb482d765b0d00c6548: 0.5
     - Vector1_b64f9c2794f44052ad57c32bfb3fbc3e: 0
     - Vector1_f186b281546345868daf4e4745adf9f8: 1
     - _AlphaClip: 0
@@ -120,7 +120,9 @@ Material:
     - Color_904f22ec06a144539fa3eef73457bb8b: {r: 0.5223834, g: 0.7378367, b: 0.8584906, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _DeepWaterColor: {r: 0.22067454, g: 0.32976118, b: 0.53773576, a: 0.4666667}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _ShallowWaterColor: {r: 0.512994, g: 0.7121215, b: 0.8301887, a: 0.5529412}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &1990142189224619627
