@@ -15,6 +15,7 @@ public class ObjectAudioPlayer : MonoBehaviour
 
     [Header("Objekte")]
     public AudioClip Sofa;
+    public AudioClip Pumpe;
 
     [Header("PlayOnlyOnce")]
     public AudioClip Kartoffel;
@@ -85,6 +86,12 @@ public class ObjectAudioPlayer : MonoBehaviour
     public void PlaySofa()
     {
         audioSource.clip = (Sofa);
+        audioSource.Play();
+    }
+
+    public void PlayPumpe()
+    {
+        audioSource.clip = (Pumpe);
         audioSource.Play();
     }
     public void PlayFeuerholz()
