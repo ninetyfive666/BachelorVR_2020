@@ -16,10 +16,12 @@ public class ObjectAudioPlayer : MonoBehaviour
     [Header("Objekte")]
     public AudioClip Sofa;
     public AudioClip Pumpe;
+    public AudioClip Badewanne;
+    public AudioClip Huhn;
 
     [Header("PlayOnlyOnce")]
     public AudioClip Kartoffel;
-    public AudioClip Ei;
+    public AudioClip Petersilie;
     public AudioClip Karotte;
     public AudioClip Feuerholz;
 
@@ -94,6 +96,18 @@ public class ObjectAudioPlayer : MonoBehaviour
         audioSource.clip = (Pumpe);
         audioSource.Play();
     }
+
+    public void PlayBadewanne()
+    {
+        audioSource.clip = (Badewanne);
+        audioSource.Play();
+    }
+
+    public void PlayHuhn()
+    {
+        audioSource.clip = (Huhn);
+        audioSource.Play();
+    }
     public void PlayFeuerholz()
     {
         if (bFeuerholz == false)
@@ -107,17 +121,17 @@ public class ObjectAudioPlayer : MonoBehaviour
     {   
         if (bKartoffel == false)
         {
-            audioSource.clip = (Feuerholz);
+            audioSource.clip = (Kartoffel);
             audioSource.Play();
             bKartoffel = true; 
         }
 
     }
-    public void PlayEi()
+    public void PlayPetersilie()
     {
         if (bEi == false)
         {
-            audioSource.clip = (Feuerholz);
+            audioSource.clip = (Petersilie);
             audioSource.Play();
             bEi = true;
         }

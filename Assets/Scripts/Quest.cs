@@ -12,7 +12,7 @@ public class Quest : MonoBehaviour
 
     [Header("Collectables")]
     public GameObject Kartoffel;
-    public GameObject Ei;
+    public GameObject Petersilie;
     public GameObject Karotte;
 
     [Header("Spawn")]
@@ -56,19 +56,19 @@ public class Quest : MonoBehaviour
         rend = GetComponent<MeshRenderer>();
 
         rbKartoffel = Kartoffel.GetComponent<Rigidbody>();
-        rbEi = Ei.GetComponent<Rigidbody>();
+        rbEi = Petersilie.GetComponent<Rigidbody>();
         rbKarotte = Karotte.GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        if (bEi == true && bKartoffel == true && questStep1Complete == false)
+        if (bKartoffel == true && questStep1Complete == false)
         {
             QuestStep1();
             questStep1Complete = true;
         }
 
-        if (bKarotte == true & questStep2Complete == false)
+        if (bKarotte == true && bEi == true && questStep2Complete == false)
         {
             QuestStep2();
             questStep2Complete = true;
@@ -89,10 +89,10 @@ public class Quest : MonoBehaviour
             Kartoffel.transform.SetParent(parentTransform);
             rbKartoffel.isKinematic = true;
         }
-        if (other.transform.gameObject == Ei)
+        if (other.transform.gameObject == Petersilie)
         {
             bEi = true;
-            Ei.transform.SetParent(parentTransform);
+            Petersilie.transform.SetParent(parentTransform);
             rbEi.isKinematic = true;
         }
 
@@ -136,7 +136,7 @@ public class Quest : MonoBehaviour
         eimerTrigger.enabled = false;
         Kartoffel.transform.SetParent(null);
         Karotte.transform.SetParent(null);
-        Ei.transform.SetParent(null);
+        Petersilie.transform.SetParent(null);
         rbKartoffel.isKinematic = false;
         rbKarotte.isKinematic = false;
         rbEi.isKinematic = false;
