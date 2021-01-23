@@ -24,6 +24,7 @@ public class ObjectAudioPlayer : MonoBehaviour
     public AudioClip Petersilie;
     public AudioClip Karotte;
     public AudioClip Feuerholz;
+    public AudioClip washingQuestStep1;
 
     [Header("KochQuest")]
     public AudioClip questStart;
@@ -33,16 +34,15 @@ public class ObjectAudioPlayer : MonoBehaviour
 
     [Header("WaschQuest")]
     public AudioClip washingQuestStart;
-    public AudioClip washingQuestStep1;
     public AudioClip washingQuestStep2;
     public AudioClip washingQuestStep3;
-
     AudioSource audioSource;
 
     bool bEi = false;
     bool bKartoffel = false;
     bool bFeuerholz = false;
     bool bKarotte = false;
+    bool bKleidung = false;
 
     void Start()
     {
@@ -181,8 +181,13 @@ public class ObjectAudioPlayer : MonoBehaviour
 
     public void PlayWhashingQuestStep1()
     {
-        audioSource.clip = (washingQuestStep1);
-        audioSource.Play();
+        if (bKleidung == false)
+        {
+            audioSource.clip = (washingQuestStep1);
+            audioSource.Play();
+            bKleidung = true;
+        }
+
     }
     public void PlayWhashingQuestStep2()
     {

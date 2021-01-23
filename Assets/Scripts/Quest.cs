@@ -32,6 +32,8 @@ public class Quest : MonoBehaviour
     Rigidbody rbEi;
     Rigidbody rbKarotte;
 
+    public GameObject Kueche;
+
     Transform parentTransform;
     BoxCollider eimerTrigger;
 
@@ -41,9 +43,10 @@ public class Quest : MonoBehaviour
     bool bKartoffel = false;
     bool bKarotte = false;
 
+
     bool questStarted = false;
     bool questStep1Complete = false;
-    bool questStep2Complete = false;
+    public bool questStep2Complete = false;
     bool questStep3Complete = false;
 
 
@@ -79,7 +82,6 @@ public class Quest : MonoBehaviour
             QuestStep3();
             questStep3Complete = true;
         }
-
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -129,6 +131,7 @@ public class Quest : MonoBehaviour
         Line3.enabled = false;
         Line4.enabled = true;
         Prop.SetActive(true);
+        Kueche.gameObject.SetActive(true);
     }
 
     public void KitchenTrigger()
@@ -140,6 +143,7 @@ public class Quest : MonoBehaviour
         rbKartoffel.isKinematic = false;
         rbKarotte.isKinematic = false;
         rbEi.isKinematic = false;
+
     }
 
     void QuestStep3()
