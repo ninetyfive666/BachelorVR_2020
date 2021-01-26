@@ -13,7 +13,7 @@ public class TriggerActivation : MonoBehaviour
     {
         if (triggerRecognized == true && triggerHasBeenActivated == false)
         {
-            Quest.KitchenTrigger();
+            Quest.KitchenTrigger(); 
             triggerHasBeenActivated = true;
         }
     }
