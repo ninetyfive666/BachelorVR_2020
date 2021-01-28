@@ -17,7 +17,7 @@ public class Quest : MonoBehaviour
 
     [Header("Spawn")]
     public GameObject Prop;
-    public GameObject[] spawnArray;
+    public GameObject Kartoffelsuppe;
 
 
     [Header("Leitsystem")]
@@ -25,8 +25,6 @@ public class Quest : MonoBehaviour
     public LineRenderer Line2;
     public LineRenderer Line3;
     public LineRenderer Line4;
-
-    public GameObject origin;
 
     Rigidbody rbKartoffel;
     Rigidbody rbEi;
@@ -43,7 +41,6 @@ public class Quest : MonoBehaviour
     bool bKartoffel = false;
     bool bKarotte = false;
 
-
     bool questStarted = false;
     bool questStep1Complete = false;
     public bool questStep2Complete = false;
@@ -52,11 +49,12 @@ public class Quest : MonoBehaviour
 
     void Start()
     {
-        parentTransform = GetComponent<Transform>();
 
+        parentTransform = GetComponent<Transform>();
         eimerTrigger = GetComponent<BoxCollider>();
 
         rend = GetComponent<MeshRenderer>();
+        rend.enabled = false;
 
         rbKartoffel = Kartoffel.GetComponent<Rigidbody>();
         rbEi = Petersilie.GetComponent<Rigidbody>();
@@ -106,6 +104,7 @@ public class Quest : MonoBehaviour
         }
     }
 
+    // Quest wird gestartet
     public void QuestStart()
     {
         if(questStarted == false)
@@ -114,9 +113,12 @@ public class Quest : MonoBehaviour
             Line2.enabled = true;
             objectAudioPlayer.PlayQuestStart();
             questStarted = true;
+            rend.enabled = true;
         }
 
     }
+
+    // Kartoffel im Eimer
     void QuestStep1()
     {
         objectAudioPlayer.PlayQuestStep1();
@@ -125,6 +127,7 @@ public class Quest : MonoBehaviour
         Line3.enabled = true;
     }
 
+    // Petersilie und Karotte im Eimer
     void QuestStep2()
     {
         objectAudioPlayer.PlayQuestStep2();
@@ -134,6 +137,7 @@ public class Quest : MonoBehaviour
         Kueche.gameObject.SetActive(true);
     }
 
+    // Wieder zurück in der Küche
     public void KitchenTrigger()
     {
         eimerTrigger.enabled = false;
@@ -146,16 +150,12 @@ public class Quest : MonoBehaviour
 
     }
 
+    //Alle Zutaten sind im Topf
     void QuestStep3()
     {   
-        objectAudioPlayer.PlayQuestStep2();
+        objectAudioPlayer.PlayQuestStep3();
+        Kartoffelsuppe.SetActive(true);
         Line4.enabled = false;
-        for (int i = 0; i < spawnArray.Length; i++)
-        {
-            spawnArray[i].SetActive(true);
-        }
-        parentTransform.position = origin.transform.position;
         rend.enabled = false;
-
     }
 }

@@ -18,13 +18,14 @@ public class ObjectAudioPlayer : MonoBehaviour
     public AudioClip Pumpe;
     public AudioClip Badewanne;
     public AudioClip Huhn;
+    public AudioClip Petroleumlampe;
 
     [Header("PlayOnlyOnce")]
     public AudioClip Kartoffel;
     public AudioClip Petersilie;
     public AudioClip Karotte;
     public AudioClip Feuerholz;
-    public AudioClip washingQuestStep1;
+
 
     [Header("KochQuest")]
     public AudioClip questStart;
@@ -34,8 +35,10 @@ public class ObjectAudioPlayer : MonoBehaviour
 
     [Header("WaschQuest")]
     public AudioClip washingQuestStart;
+    public AudioClip washingQuestStep1;
     public AudioClip washingQuestStep2;
     public AudioClip washingQuestStep3;
+    public AudioClip washingQuestStep4;
     AudioSource audioSource;
 
     bool bEi = false;
@@ -106,6 +109,12 @@ public class ObjectAudioPlayer : MonoBehaviour
     public void PlayHuhn()
     {
         audioSource.clip = (Huhn);
+        audioSource.Play();
+    }
+
+    public void PlayPetroleumlampe()
+    {
+        audioSource.clip = (Petroleumlampe);
         audioSource.Play();
     }
     public void PlayFeuerholz()
@@ -181,23 +190,29 @@ public class ObjectAudioPlayer : MonoBehaviour
 
     public void PlayWhashingQuestStep1()
     {
-        if (bKleidung == false)
-        {
+
             audioSource.clip = (washingQuestStep1);
             audioSource.Play();
-            bKleidung = true;
-        }
-
     }
     public void PlayWhashingQuestStep2()
     {
-        audioSource.clip = (washingQuestStep2);
-        audioSource.Play();
+        if (bKleidung == false)
+        {
+            audioSource.clip = (washingQuestStep2);
+            audioSource.Play();
+            bKleidung = true;
+        }
     }
 
     public void PlayWhashingQuestStep3()
     {
         audioSource.clip = (washingQuestStep3);
+        audioSource.Play();
+    }
+
+    public void PlayWhashingQuestStep4()
+    {
+        audioSource.clip = (washingQuestStep4);
         audioSource.Play();
     }
 }

@@ -66,7 +66,7 @@ public class WaschQuest : MonoBehaviour
     {
         Tween.ShaderColor(waterRenderer.material, ("_DeepWaterColor"), dirty, 1, 0f);
         Tween.ShaderColor(waterRenderer.material, ("_ShallowWaterColor"), dirty, 1, 0f);
-        objectAudioPlayer.PlayWhashingQuestStep2();
+        objectAudioPlayer.PlayWhashingQuestStep3();
         Line1.enabled = false;
         Line2.enabled = true;
     }
@@ -74,7 +74,7 @@ public class WaschQuest : MonoBehaviour
     public void FactorySmoke()
     {
         Smoke.SetActive(true);
-        objectAudioPlayer.PlayWhashingQuestStep3();
+        objectAudioPlayer.PlayWhashingQuestStep4();
         Line2.enabled = false;
     }
 
